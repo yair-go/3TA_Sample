@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DLAPI;
 using BLAPI;
 using System.Threading;
+using BO;
 
 namespace BL
 {
@@ -44,15 +45,18 @@ namespace BL
             studentBO.ListOfCourses = from sic in dl.GetStudentInCourseList(sic => sic.PersonId == id)
                                       let course = dl.GetCourse(sic.CourseId)
                                       select course.CopyToStudentCourse(sic);
-                                      //new BO.StudentCourse()
-                                      //{
-                                      //    ID = course.ID,
-                                      //    Number = course.Number,
-                                      //    Name = course.Name,
-                                      //    Year = course.Year,
-                                      //    Semester = (BO.Semester)(int)course.Semester,
-                                      //    Grade = sic.Grade
-                                      //};
+            //new bo.studentcourse()
+            //{
+            //    id = course.id,
+            //    number = course.number,
+            //    name = course.name,
+            //    year = course.year,
+            //    semester = (bo.semester)(int)course.semester,
+            //    grade = sic.grade
+            //};
+
+           // var listOfCourses = dl.GetStudentInCourseList(sic => sic.PersonId == id).Select(c => dl.GetCourse(c.CourseId));
+           
             return studentBO;
         }
 
@@ -77,6 +81,16 @@ namespace BL
                    let student = item as BO.ListedPerson
                    orderby student.ID
                    select student;
+        }
+
+        public void AddStudent(BO.Student studentBO)
+        {
+            DO.Student studentDO = new DO.Student();
+            DO.Person personDO = new DO.Person();
+            studentBO.CopyPropertiesTo(personDO);
+            studentBO.CopyPropertiesTo(studentDO);
+            dl.AddPerson(personDO);
+            dl.AddStudent(studentDO);
         }
     }
 }

@@ -13,10 +13,17 @@ namespace BLAPI
         //Add Person to Course
         //get all courses for student
         //etc...
+
+        #region Read
         Student GetStudent(int id);
         IEnumerable<Student> GetAllStudents();
         IEnumerable<ListedPerson> GetStudentIDs();
 
         IEnumerable<Student> GetStudentsBy(Predicate<Student> predicate);
+        #endregion
+
+        #region ADD
+        void AddStudent(Student student);
+        #endregion
     }
 }

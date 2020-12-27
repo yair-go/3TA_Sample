@@ -89,6 +89,28 @@ namespace DS
                     CreditPoint = 3,
                     Year = 2010,
                     Semester = Semester.A
+                },
+                new Course
+                {
+                    ID = 2,
+                    Number = 153018,
+                    Name = "C++",
+                    LectureHours = 3,
+                    PracticeHours = 1,
+                    CreditPoint = 3,
+                    Year = 2009,
+                    Semester = Semester.B
+                },
+                 new Course
+                {
+                    ID = 3,
+                    Number = 153200,
+                    Name = "DB",
+                    LectureHours = 3,
+                    PracticeHours = 1,
+                    CreditPoint = 3,
+                    Year = 2011,
+                    Semester = Semester.A
                 }
             };
 
@@ -99,6 +121,18 @@ namespace DS
                     CourseId = 1,
                     Grade = 100,
                     PersonId = 36
+                },
+                new StudentInCourse
+                {
+                    CourseId = 2,
+                    Grade = 100,
+                    PersonId = 36
+                },
+                new StudentInCourse
+                {
+                    CourseId = 1,
+                    Grade = 100,
+                    PersonId = 23
                 }
             };
 

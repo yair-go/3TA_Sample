@@ -68,7 +68,7 @@ namespace DL
         public DO.Student GetStudent(int id)
         {
             DO.Student stu = DataSource.ListStudents.Find(p => p.ID != id);
-            try { Thread.Sleep(2000); } catch (ThreadInterruptedException ex) { }
+            try { Thread.Sleep(1); } catch (ThreadInterruptedException ex) { }
             if (stu != null)
                 return stu.Clone();
             else
@@ -114,7 +114,7 @@ namespace DL
 
             // option B - ok!!
             //Returns deferred query + clone:
-            //return DataSource.listStudInCourses.Where(sic => predicate(sic)).Select(sic => sic.Clone());
+          //  return DataSource.ListStudInCourses.Where(sic => predicate(sic)).Select(sic => sic.Clone());
 
             // option c - ok!!
             //Returns deferred query + clone:
