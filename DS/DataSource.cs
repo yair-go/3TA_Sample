@@ -82,7 +82,6 @@ namespace DS
 
             };
 
-
             ListStudents = new List<Student>
             {
                 new Student
@@ -162,34 +161,34 @@ namespace DS
 
             };
 
-            ListStudInCourses = new List<StudentInCourse>
-            {
-                new StudentInCourse
-                {
-                    CourseId = 1,
-                    Grade = 100,
-                    PersonId = 36
-                },
-                new StudentInCourse
-                {
-                    CourseId = 2,
-                    Grade = 100,
-                    PersonId = 36
-                },
-                new StudentInCourse
-                {
-                    CourseId = 3,
-                    Grade = 100,
-                    PersonId = 23
-                },
-                new StudentInCourse
-                {
-                    CourseId = 3,
-                    Grade = 100,
-                    PersonId = 15
-                }
-            };
-
+        //    ListStudInCourses = new List<StudentInCourse>();
+            //{
+            //    new StudentInCourse
+            //    {
+            //        CourseId = 1,
+            //        Grade = 100,
+            //        PersonId = 36
+            //    },
+            //    new StudentInCourse
+            //    {
+            //        CourseId = 2,
+            //        Grade = 100,
+            //        PersonId = 36
+            //    },
+            //    new StudentInCourse
+            //    {
+            //        CourseId = 3,
+            //        Grade = 100,
+            //        PersonId = 23
+            //    },
+            //    new StudentInCourse
+            //    {
+            //        CourseId = 3,
+            //        Grade = 100,
+            //        PersonId = 15
+            //    }
+            //};
+            createRandomStudentsInCourse();
             ListLecturers = new List<Lecturer>
             {
                 new Lecturer
@@ -238,7 +237,23 @@ namespace DS
                     GroupsAmount =3
                 }
             };
+        }
 
+        static void createRandomStudentsInCourse()
+        {
+            Random random = new Random(DateTime.Now.Millisecond);
+            List<int> studentIDs = ListStudents.Select(s => s.ID).ToList();
+            List<int> courseIDs = ListCourses.Select(c => c.ID).ToList();
+            ListStudInCourses = new List<StudentInCourse>();
+            foreach (int studentID in studentIDs)
+            {
+                foreach (int courseId in courseIDs)
+                {
+                    ListStudInCourses.Add(
+                        new StudentInCourse { CourseId = courseId, Grade = random.Next(60, 101), PersonId = studentID }
+                        );
+                }
+            }    
         }
     }
 }

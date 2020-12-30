@@ -42,6 +42,7 @@ namespace BL
 
             studentBO.ListOfCourses = from sic in dl.GetStudentsInCourseList(sic => sic.PersonId == id)
                                       let course = dl.GetCourse(sic.CourseId)
+                                      orderby sic.Grade descending
                                       select course.CopyToStudentCourse(sic);
 
             //new bo.studentcourse()
