@@ -55,7 +55,7 @@ namespace BL
             //    grade = sic.grade
             //};
 
-           // var listOfCourses = dl.GetStudentInCourseList(sic => sic.PersonId == id).Select(c => dl.GetCourse(c.CourseId));
+            var listOfCourses = dl.GetStudentInCourseList(sic => sic.PersonId == id).Select(sic => dl.GetCourse(sic.CourseId).CopyToStudentCourse(sic));
            
             return studentBO;
         }
