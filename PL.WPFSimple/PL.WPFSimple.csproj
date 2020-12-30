@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{11EEA771-EB00-4BBD-95A5-1B7DA92AA549}</ProjectGuid>
+    <ProjectGuid>{51AD7CEA-E570-4EC3-80EB-039D77A2FABF}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>PL.WPF.Person</RootNamespace>
-    <AssemblyName>PL.WPF.Person</AssemblyName>
+    <RootNamespace>PL.SimpleWPF</RootNamespace>
+    <AssemblyName>PL.SimpleWPF</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -53,13 +53,17 @@
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="PO\ListedPerson.cs" />
-    <Compile Include="ViewModel\MainWindow.cs" />
-    <Compile Include="ViewModel\DeepCopyUtilities.cs" />
-    <Compile Include="PO\Person.cs" />
-    <Compile Include="PO\Student.cs" />
+    <Compile Include="GradeWindow.xaml.cs">
+      <DependentUpon>GradeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StudentWindow.xaml.cs">
+      <DependentUpon>StudentWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="GradeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -72,9 +76,12 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="StudentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PO\StudentCourse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -93,16 +100,8 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Properties\DataSources\BO.Course.datasource" />
-    <None Include="Properties\DataSources\BO.CourseLecturer.datasource" />
-    <None Include="Properties\DataSources\BO.Lecturer.datasource" />
-    <None Include="Properties\DataSources\BO.LecturerCourse.datasource" />
-    <None Include="Properties\DataSources\BO.Person.datasource" />
     <None Include="Properties\DataSources\BO.Student.datasource" />
     <None Include="Properties\DataSources\BO.StudentCourse.datasource" />
-    <None Include="Properties\DataSources\PO.ListedPerson.datasource" />
-    <None Include="Properties\DataSources\PO.Person.datasource" />
-    <None Include="Properties\DataSources\PO.Student.datasource" />
-    <None Include="Properties\DataSources\PO.StudentCourse.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
