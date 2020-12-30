@@ -5,7 +5,6 @@ using DLAPI;
 using BLAPI;
 using System.Threading;
 using BO;
-//using BO;
 
 namespace BL
 {
@@ -44,6 +43,19 @@ namespace BL
             studentBO.ListOfCourses = from sic in dl.GetStudentsInCourseList(sic => sic.PersonId == id)
                                       let course = dl.GetCourse(sic.CourseId)
                                       select course.CopyToStudentCourse(sic);
+
+            //new bo.studentcourse()
+            //{
+            //    id = course.id,
+            //    number = course.number,
+            //    name = course.name,
+            //    year = course.year,
+            //    semester = (bo.semester)(int)course.semester,
+            //    grade = sic.grade
+            //};
+
+            //var listOfCourses = dl.GetStudentInCourseList(sic => sic.PersonId == id).Select(sic => dl.GetCourse(sic.CourseId).CopyToStudentCourse(sic));
+           
             //new BO.StudentCourse()
             //{
             //    ID = course.ID,
@@ -53,6 +65,7 @@ namespace BL
             //    Semester = (BO.Semester)(int)course.Semester,
             //    Grade = sic.Grade
             //};
+
 
             return studentBO;
         }
@@ -95,6 +108,17 @@ namespace BL
                    let student = item as BO.ListedPerson
                    //orderby student.ID
                    select student;
+        }
+
+
+        public void AddStudent(BO.Student studentBO)
+        {
+            DO.Student studentDO = new DO.Student();
+            DO.Person personDO = new DO.Person();
+            studentBO.CopyPropertiesTo(personDO);
+            studentBO.CopyPropertiesTo(studentDO);
+            dl.AddPerson(personDO);
+            dl.AddStudent(studentDO);
         }
 
         public void UpdateStudentPersonalDetails(BO.Student student)
