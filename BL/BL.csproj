@@ -45,6 +45,7 @@
     <Compile Include="BLImp.cs" />
     <Compile Include="BO\Course.cs" />
     <Compile Include="BO\CourseLecturer.cs" />
+    <Compile Include="BO\CourseStudent.cs" />
     <Compile Include="BO\Enums.cs" />
     <Compile Include="BO\Exceptions.cs" />
     <Compile Include="BO\Lecturer.cs" />

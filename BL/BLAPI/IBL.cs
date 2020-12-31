@@ -35,6 +35,7 @@ namespace BLAPI
 
         #region Course
         IEnumerable<BO.Course> GetAllCourses();
+        void FactorCourseGrades(int courseID, int factor);
         #endregion
 
 

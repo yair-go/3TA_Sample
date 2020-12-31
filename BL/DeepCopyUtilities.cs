@@ -35,5 +35,15 @@ namespace BL
             result.Grade = sic.Grade;
             return result;
         }
+
+        public static BO.CourseStudent CopyToCourseStudent(this BO.Student student, DO.StudentInCourse sic)
+        {
+            BO.CourseStudent result = (BO.CourseStudent)student.CopyPropertiesToNew(typeof(BO.CourseStudent));
+            // propertys' names changed? copy them here...
+            result.Grade = sic.Grade;
+            return result;
+        }
+
+
     }
 }

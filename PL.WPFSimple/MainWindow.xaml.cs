@@ -45,11 +45,8 @@ namespace PL.SimpleWPF
             }
             else
             {
-                //CoursesWindow win = new CoursesWindow(bl);
-                //win.Show();
-                MessageBox.Show("This method is under construction!", "TBD", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-
-
+                CoursesWindow win = new CoursesWindow(bl);
+                win.Show();
             }
 
         }

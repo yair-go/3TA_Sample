@@ -219,12 +219,27 @@ namespace BL
             courseBO.Lecturers = from lic in dl.GetLecturersInCourseList(lic => lic.CourseId == id)
                                  let course = dl.GetCourse(lic.CourseId)
                                  select (BO.CourseLecturer) course.CopyPropertiesToNew(typeof(BO.CourseLecturer));
+
+            courseBO.Average = dl.GetStudentsInCourseList(sic => sic.CourseId == id).Average(sic => sic.Grade).Value;
+
+            courseBO.Students = from sic in dl.GetStudentsInCourseList(sic => sic.CourseId == id)
+                                let student = studentDoBoAdapter(dl.GetStudent(sic.PersonId))
+                                select student.CopyToCourseStudent(sic);
             return courseBO;
         }
         public IEnumerable<BO.Course> GetAllCourses()
         {
             return from crsDO in dl.GetAllCourses()
                    select courseDoBoAdapter(crsDO);
+        }
+
+        public void FactorCourseGrades(int courseID, int factor)
+        {
+            BO.Course course = courseDoBoAdapter(dl.GetCourse(courseID));
+            foreach (var student in course.Students)
+            {
+                UpdateStudentGradeInCourse(student.ID, course.ID, student.Grade.Value + factor);
+            }
         }
 
         #endregion

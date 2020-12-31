@@ -17,5 +17,7 @@ namespace BO
         public int Year { get; set; }
         public Semester Semester { get; set; }
         public IEnumerable<CourseLecturer> Lecturers { get; set; }
+        public IEnumerable<CourseStudent> Students { get; set; }
+        public float Average { get; set; }
     }
 }
