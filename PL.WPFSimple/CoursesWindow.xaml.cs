@@ -50,6 +50,10 @@ namespace PL.SimpleWPF
 
         private void pbFactorGrades_Click(object sender, RoutedEventArgs e)
         {
+            //foreach (var student in curCourse.Students)
+            //{
+            //    bl.UpdateStudentGradeInCourse(student.ID, curCourse.ID, student.Grade.Value + 5);
+            //} 
             bl.FactorCourseGrades(curCourse.ID, 5);
             RefreshCourseStudentDataGrid();
         }
